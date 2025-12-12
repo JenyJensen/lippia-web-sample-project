@@ -2,7 +2,7 @@ package lippia.web.services;
 
 import com.crowdar.core.PropertyManager;
 import com.crowdar.core.actions.ActionManager;
-import lippia.web.constants.SauceConstants;
+import lippia.web.constants.SauceLoginConstants;
 import lippia.web.constants.SauceInventoryConstants;
 import org.testng.Assert;
 
@@ -14,16 +14,33 @@ public class SauceLoginService extends ActionManager {
     }
 
     public static void ingresoUsuYConPorParametros(String usuario, String contrasenia) {
-        setInput(SauceConstants.USER_ID, usuario);
-        setInput(SauceConstants.PASSWORD_ID, contrasenia);
+        setInput(SauceLoginConstants.USER_ID, usuario);
+        setInput(SauceLoginConstants.PASSWORD_ID, contrasenia);
     }
 
     public static void clickLoginButton() {
-        click(SauceConstants.LOGIN_BUTTON_ID);
+        click(SauceLoginConstants.LOGIN_BUTTON_ID);
     }
 
     public static void verificoAppLogo() {
         Assert.assertTrue(isPresent(SauceInventoryConstants.APP_LOGO_CLASS),"No se ve el logo de la app");
+    }
+    public static void verificoMsjUsBloq() {
+        junit.framework.Assert.assertTrue("No se ve mensaje de error de usuario bloqueado", getText(SauceLoginConstants.ERROR_MSJ_CSS).contains("Epic sadface: Sorry, this user has been locked out."));
+    }
+
+    public static void verificoMsjUsInexistInval() {
+        junit.framework.Assert.assertTrue("No se ve mensaje de error de usuario inexistente", getText(SauceLoginConstants.ERROR_MSJ_CSS).contains("Epic sadface: Username and password do not match any user in this service"));
+
+    }
+
+    public static void verificoMsjUsRequerido() {
+        junit.framework.Assert.assertTrue("No se ve mensaje de error de usuario requerido", getText(SauceLoginConstants.ERROR_MSJ_CSS).contains("Epic sadface: Username is required"));
+    }
+
+    public static void verificoMsjPasRequerido() {
+        junit.framework.Assert.assertTrue("No se ve mensaje de error", getText(SauceLoginConstants.ERROR_MSJ_CSS).contains("Epic sadface: Password is required"));
+
     }
 }
 

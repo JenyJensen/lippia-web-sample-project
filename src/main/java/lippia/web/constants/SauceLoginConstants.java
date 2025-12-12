@@ -1,6 +1,6 @@
 package lippia.web.constants;
 
-public class SauceConstants {
+public class SauceLoginConstants {
 
     public static final String USER_ID = "id:user-name";
     public static final String PASSWORD_ID = "id:password";

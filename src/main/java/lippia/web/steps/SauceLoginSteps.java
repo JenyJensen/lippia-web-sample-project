@@ -27,14 +27,27 @@ public class SauceLoginSteps extends PageSteps {
         SauceLoginService.clickLoginButton();
     }
 
-    @Then("verifico ver el logo de la app en el homepage")
-    public void verificoVerLogo(){
+    @Then("verifico ver el logo de la app en el inventory")
+    public void verificoVerLogo() {
         SauceLoginService.verificoAppLogo();
     }
+
     @Then("verifico ver mensaje de error específico Epic sadface: Sorry, this user has been locked out.")
-    public void verificoVerMensajeError(){
-        SauceInventoryService.verificoMensajeError();
+    public void verificoVerMsjUsBloq() {
+        SauceLoginService.verificoMsjUsBloq();
     }
 
+    @Then("verifico ver mensaje de error Epic sadface: Username and password do not match any user in this service")
+    public void verificoVerMjeUsuInexistente() {
+        SauceLoginService.verificoMsjUsInexistInval();
+    }
+    @Then("verifico ver mensaje de error Epic sadface: Username is required")
+    public void verificoVerMsjUsuRequerido(){
+        SauceLoginService.verificoMsjUsRequerido();
+    }
+    @Then("verifico ver mensaje de error Epic sadface: Password is required")
+    public void verificoVerMsjPasRequerido(){
+        SauceLoginService.verificoMsjPasRequerido();
+    }
 }
 
