@@ -2,7 +2,7 @@
 Feature: login en saucedemo
 
   @LoginSauce
-  Scenario Outline: login <tipo> en página de inicio de saucedemo
+  Scenario Outline: login <tipo> en pagina de inicio de saucedemo
     Given estoy en la página de login de saucedemo
     When ingreso el usuario <usuario> y la contrasenia <contrasenia>
     And hago click en el botón <boton>
