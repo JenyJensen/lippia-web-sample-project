@@ -4,7 +4,6 @@ import com.crowdar.core.actions.ActionManager;
 import com.crowdar.core.actions.WebActionManager;
 import junit.framework.Assert;
 import lippia.web.constants.SauceInventoryConstants;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import java.util.Collections;
 import java.util.HashMap;
@@ -98,32 +97,27 @@ public class SauceInventoryService extends ActionManager {
     // -------------------------------
     // Agrega un producto por nombre
     // -------------------------------
-    private static void addProductByName(String productName) {
+    public static void addProductByName(String productName) {
 
-        List<WebElement> products =
-                WebActionManager.getElements(SauceInventoryConstants.PRODUCT_NAME_CLASS);
+        List<WebElement> names =
+                WebActionManager.getElements(SauceInventoryConstants.PRODUCT_NAME_CSS);
 
-        for (WebElement product : products) {
+        List<WebElement> buttons =
+                WebActionManager.getElements(SauceInventoryConstants.ADD_TO_CART_XPATH);
 
-            String name = product
-                    .findElement(By.cssSelector(SauceInventoryConstants.PRODUCT_NAME_CLASS))
-                    .getText()
-                    .trim();
+        for (int i = 0; i < names.size(); i++) {
 
-            if (name.equalsIgnoreCase(productName)) {
+            String name = names.get(i).getText().trim();
 
-                WebElement button = product
-                        .findElement(By.cssSelector(SauceInventoryConstants.ADD_TO_CART_XPATH));
-
-                if (button.getText().equalsIgnoreCase("Add to cart")) {
-                    WebActionManager.click(button);
-                }
+            if (name.equalsIgnoreCase(productName.trim())) {
+                buttons.get(i).click();
                 return;
             }
         }
 
         throw new RuntimeException(
-                "Producto no encontrado: " + productName);
+                "No se encontró el producto: " + productName);
     }
+
 }
 
