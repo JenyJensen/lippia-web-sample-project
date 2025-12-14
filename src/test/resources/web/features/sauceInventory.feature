@@ -2,10 +2,10 @@
   Feature: Agregar y eliminar productos del carrito de compras de saucedemo
 
 Background:
-Given estoy en la página de inicio de la aplicación
+Given he iniciado sesion y estoy en la pagina de inventario de la aplicacion
 
     @SauceAgregarProductoCarritoEnHomepage
-    Scenario: agregar productos al carrito de compras desde homepage
+    Scenario: agregar productos al carrito de compras desde inventory page
       When hago click en add to cart en el primer producto
       Then verifico que en el icono carrito aparezca el numero uno
 

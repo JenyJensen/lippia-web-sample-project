@@ -14,11 +14,12 @@ import static lippia.web.services.SauceLoginService.clickLoginButton;
 import static lippia.web.services.SauceLoginService.ingresoUsuYConPorParametros;
 
 public class SauceInventorySteps extends PageSteps {
-    @Given("estoy en la página de inicio de la aplicación")
+    @Given("he iniciado sesion y estoy en la pagina de inventario de la aplicacion")
     public void homepage() {
         navigateTo(PropertyManager.getProperty("web.base.url"));
         ingresoUsuYConPorParametros("standard_user", "secret_sauce");
         clickLoginButton();
+        SauceInventoryService.verificoAppLogo();
     }
 
     @When("hago click en add to cart en el primer producto")
@@ -40,5 +41,10 @@ public class SauceInventorySteps extends PageSteps {
     @Then("verifico que el contador del carrito de compras no se ve")
     public void verificoContadorDelCarritoNoVisible() {
         SauceInventoryService.verificoContadorCarritoVacio();
+    }
+
+    @And("he agregado (.*) al carrito")
+    public void heAgregadoProductosAlCarrito(String producto) {
+        SauceInventoryService.agregoProductosAlCarrito(producto);
     }
 }

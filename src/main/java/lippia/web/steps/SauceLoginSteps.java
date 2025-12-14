@@ -29,7 +29,7 @@ public class SauceLoginSteps extends PageSteps {
 
     @Then("verifico ver el logo de la app en el inventory")
     public void verificoVerLogo() {
-        SauceLoginService.verificoAppLogo();
+        SauceInventoryService.verificoAppLogo();
     }
 
     @Then("verifico ver mensaje de error específico Epic sadface: Sorry, this user has been locked out.")

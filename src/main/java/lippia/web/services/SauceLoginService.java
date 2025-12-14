@@ -3,9 +3,6 @@ package lippia.web.services;
 import com.crowdar.core.PropertyManager;
 import com.crowdar.core.actions.ActionManager;
 import lippia.web.constants.SauceLoginConstants;
-import lippia.web.constants.SauceInventoryConstants;
-import org.testng.Assert;
-
 import static com.crowdar.core.actions.WebActionManager.navigateTo;
 
 public class SauceLoginService extends ActionManager {
@@ -22,9 +19,6 @@ public class SauceLoginService extends ActionManager {
         click(SauceLoginConstants.LOGIN_BUTTON_ID);
     }
 
-    public static void verificoAppLogo() {
-        Assert.assertTrue(isPresent(SauceInventoryConstants.APP_LOGO_CLASS),"No se ve el logo de la app");
-    }
     public static void verificoMsjUsBloq() {
         junit.framework.Assert.assertTrue("No se ve mensaje de error de usuario bloqueado", getText(SauceLoginConstants.ERROR_MSJ_CSS).contains("Epic sadface: Sorry, this user has been locked out."));
     }
