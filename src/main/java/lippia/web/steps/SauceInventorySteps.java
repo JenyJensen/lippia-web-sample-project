@@ -28,9 +28,9 @@ public class SauceInventorySteps extends PageSteps {
     }
 
 
-    @Then("verifico que en el icono carrito aparezca el numero uno")
-    public void verificoIconoCarritoMuestraUno() {
-        SauceInventoryService.verificoContadorCarrito();
+    @Then("verifico que en el icono carrito aparezca el numero (.*)")
+    public void verificoIconoCarritoMuestraUno(int numero) {
+        SauceInventoryService.verificoContadorCarrito(numero);
     }
 
     @And("hago click en boton remove del producto agregado al carrito de compras")

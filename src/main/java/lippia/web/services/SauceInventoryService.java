@@ -4,13 +4,28 @@ import com.crowdar.core.actions.ActionManager;
 import com.crowdar.core.actions.WebActionManager;
 import junit.framework.Assert;
 import lippia.web.constants.SauceInventoryConstants;
+import lippia.web.constants.SauceLoginConstants;
 import org.openqa.selenium.WebElement;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static java.lang.Integer.parseInt;
+
 public class SauceInventoryService extends ActionManager {
+    private static final Map<String, Integer> TEXT_NUMBERS;
+    static {
+        Map<String, Integer> map = new HashMap<>();
+        map.put("uno", 1);
+        map.put("un", 1);
+        map.put("dos", 2);
+        map.put("tres", 3);
+        map.put("cuatro", 4);
+        map.put("cinco", 5);
+        TEXT_NUMBERS = Collections.unmodifiableMap(map);
+    }
+
     public static void verificoAppLogo() {
         junit.framework.Assert.assertTrue("No se ve el logo de la app", isPresent(SauceInventoryConstants.APP_LOGO_CLASS));
     }
@@ -19,9 +34,11 @@ public class SauceInventoryService extends ActionManager {
         click(SauceInventoryConstants.FIRST_ADD_TO_CART_XPATH);
     }
 
-    public static void verificoContadorCarrito() {
+    public static void verificoContadorCarrito(int numero) {
         Assert.assertTrue("No se ven cambios en el ícono del carrito", isPresent(SauceInventoryConstants.CONTADOR_CARRITO_CLASS));
-
+        String contadorCarrito = getText(SauceInventoryConstants.CONTADOR_CARRITO_CLASS);
+        int actual = Integer.parseInt(contadorCarrito);
+        junit.framework.Assert.assertEquals("No se ve el numero esperado en el contador",numero,actual);
     }
 
     public static void clickRemove() {
@@ -31,17 +48,6 @@ public class SauceInventoryService extends ActionManager {
 
     public static void verificoContadorCarritoVacio() {
         Assert.assertFalse("Se ve número 1 en el ícono del carrito", isPresent(SauceInventoryConstants.CONTADOR_CARRITO_CLASS));
-    }
-
-    private static final Map<String, Integer> TEXT_NUMBERS;
-    static {
-        Map<String, Integer> map = new HashMap<>();
-        map.put("un", 1);
-        map.put("dos", 2);
-        map.put("tres", 3);
-        map.put("cuatro", 4);
-        map.put("cinco", 5);
-        TEXT_NUMBERS = Collections.unmodifiableMap(map);
     }
 
     public static void agregoProductosAlCarrito(String producto) {
@@ -64,7 +70,7 @@ public class SauceInventoryService extends ActionManager {
 
         // "2 productos"
         if (value.matches("\\d+.*")) {
-            return Integer.parseInt(value.split(" ")[0]);
+            return parseInt(value.split(" ")[0]);
         }
 
         // "dos productos"

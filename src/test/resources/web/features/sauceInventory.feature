@@ -1,16 +1,20 @@
 @Saucedemo
-  Feature: Agregar y eliminar productos del carrito de compras de saucedemo
+Feature: Agregar y eliminar productos del carrito de compras de saucedemo
 
-Background:
-Given he iniciado sesion y estoy en la pagina de inventario de la aplicacion
+  Background:
+    Given he iniciado sesion y estoy en la pagina de inventario de la aplicacion
 
-    @SauceAgregarProductoCarritoEnHomepage
-    Scenario: agregar productos al carrito de compras desde inventory page
-      When hago click en add to cart en el primer producto
-      Then verifico que en el icono carrito aparezca el numero uno
+  @SauceAgregarProductoCarritoEnHomepage
+  Scenario Outline: agregar productos al carrito de compras desde inventory page
+    When hago click en add to cart en el primer producto
+    Then verifico que en el icono carrito aparezca el numero <numero>
+    Examples:
+      | numero |
+      | 1      |
+      | 2      |
 
-    @SauceEliminarProductoCarritoEnHomepage
-      Scenario: eliminar productos del carrito de compras desde homepage
-      And hago click en add to cart en el primer producto
-      When hago click en boton remove del producto agregado al carrito de compras
-      Then verifico que el contador del carrito de compras no se ve
+  @SauceEliminarProductoCarritoEnHomepage
+  Scenario: eliminar productos del carrito de compras desde homepage
+    And hago click en add to cart en el primer producto
+    When hago click en boton remove del producto agregado al carrito de compras
+    Then verifico que el contador del carrito de compras no se ve

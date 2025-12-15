@@ -7,9 +7,9 @@ Feature: carrito de compras de pagina Saucedemo
   @TerminarCompra
   Scenario Outline: termino compra de productos agregados al carrito
     And he agregado <producto> al carrito
-    Then verifico que en el icono carrito aparezca el numero uno
+    Then verifico que en el icono carrito aparezca el numero <numero>
 
     Examples:
-      | producto            |
-      | dos productos       |
-      | Sauce Labs Backpack |
+      | producto            | numero |
+      | dos productos       | 2      |
+      | Sauce Labs Backpack | 1      |
