@@ -7,9 +7,14 @@ Feature: carrito de compras de pagina Saucedemo
   @TerminarCompra
   Scenario Outline: termino compra de productos agregados al carrito
     And he agregado <producto> al carrito
-    Then verifico que en el icono carrito aparezca el numero <numero>
+    When ingreso al carrito
+    And hago click en el boton <boton>
+    And lleno el formulario con nombre <nombre>, apellido <apellido> y codigo postal <areaCode> y hago click en boton continuar
+    And hago click en el boton <boton>
+    Then verifico ver la página final de compra terminada
+
+
 
     Examples:
-      | producto            | numero |
-      | dos productos       | 2      |
-      | Sauce Labs Backpack | 1      |
+      | producto      | boton    | nombre | apellido | areaCode |boton|
+      | dos productos | checkout | Marcia | Sanz     | 1234     |finish|

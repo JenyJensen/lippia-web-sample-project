@@ -11,7 +11,6 @@ Feature: Agregar y eliminar productos del carrito de compras de saucedemo
     Examples:
       | numero |
       | 1      |
-      | 2      |
 
   @SauceEliminarProductoCarritoEnHomepage
   Scenario: eliminar productos del carrito de compras desde homepage

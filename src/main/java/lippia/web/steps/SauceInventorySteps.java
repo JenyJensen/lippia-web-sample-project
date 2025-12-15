@@ -47,4 +47,9 @@ public class SauceInventorySteps extends PageSteps {
     public void heAgregadoProductosAlCarrito(String producto) {
         SauceInventoryService.agregoProductosAlCarrito(producto);
     }
+
+    @When("ingreso al carrito")
+    public void ingresoAlCarrito() {
+        SauceInventoryService.ingresarCarrito();
+    }
 }

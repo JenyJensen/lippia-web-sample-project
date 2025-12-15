@@ -10,14 +10,13 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import static java.lang.Integer.parseInt;
 
 public class SauceInventoryService extends ActionManager {
+
     private static final Map<String, Integer> TEXT_NUMBERS;
     static {
         Map<String, Integer> map = new HashMap<>();
-        map.put("uno", 1);
         map.put("un", 1);
         map.put("dos", 2);
         map.put("tres", 3);
@@ -97,6 +96,8 @@ public class SauceInventoryService extends ActionManager {
 
         for (int i = 0; i < quantity; i++) {
             buttons.get(i).click();
+            SauceInventoryService.ingresarCarrito();
+            SauceCartService.verificoAddProdByQuantity(quantity);
         }
     }
 
@@ -117,6 +118,8 @@ public class SauceInventoryService extends ActionManager {
 
             if (name.equalsIgnoreCase(productName.trim())) {
                 buttons.get(i).click();
+                SauceInventoryService.ingresarCarrito();
+                SauceCartService.verificoAddProdByName(name);
                 return;
             }
         }
@@ -125,5 +128,8 @@ public class SauceInventoryService extends ActionManager {
                 "No se encontró el producto: " + productName);
     }
 
+    public static void ingresarCarrito() {
+        click(SauceInventoryConstants.CART_BUTTON_CLASS);
+    }
 }
 

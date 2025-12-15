@@ -22,7 +22,7 @@ public class SauceLoginSteps extends PageSteps {
         SauceLoginService.ingresoUsuYConPorParametros(usuario, contrasenia);
     }
 
-    @And("hago click en el botón login")
+    @And("hago click en el boton login")
     public void clickEnElBotonLogin() {
         SauceLoginService.clickLoginButton();
     }
