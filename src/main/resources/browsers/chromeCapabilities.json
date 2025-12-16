@@ -2,20 +2,27 @@
   "browserName": "chrome",
   "goog:chromeOptions": {
     "args": [
-      "disable-infobars",
+      "--disable-infobars",
       "--no-sandbox",
       "--disable-dev-shm-usage",
       "--test-type",
       "--ignore-certificate-errors",
       "--start-maximized",
-      "--disable-blink-features=AutomationControlled"
+      "--disable-blink-features=AutomationControlled",
+      "--disable-notifications",
+      "--disable-save-password-bubble",
+      "--disable-features=PasswordLeakDetection,PasswordManagerLeakDetection"
     ],
     "extensions": [],
     "prefs": {
       "printing.enabled": false,
       "credentials_enable_service": false,
       "profile.password_manager_enabled": false,
-      "profile.password_manager_leak_detection_enabled": false
+      "profile.password_manager_leak_detection_enabled": false,
+      "profile.default_content_setting_values.notifications": 2,
+      "profile.default_content_setting_values.popups": 2,
+      "autofill.profile_enabled": false,
+      "autofill.credit_card_enabled": false
     }
   },
   "platform": "ANY",

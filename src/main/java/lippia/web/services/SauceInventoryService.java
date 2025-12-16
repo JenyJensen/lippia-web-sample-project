@@ -2,9 +2,8 @@ package lippia.web.services;
 
 import com.crowdar.core.actions.ActionManager;
 import com.crowdar.core.actions.WebActionManager;
-import junit.framework.Assert;
+import org.testng.Assert;
 import lippia.web.constants.SauceInventoryConstants;
-import lippia.web.constants.SauceLoginConstants;
 import org.openqa.selenium.WebElement;
 import java.util.Collections;
 import java.util.HashMap;
@@ -26,7 +25,7 @@ public class SauceInventoryService extends ActionManager {
     }
 
     public static void verificoAppLogo() {
-        junit.framework.Assert.assertTrue("No se ve el logo de la app", isPresent(SauceInventoryConstants.APP_LOGO_CLASS));
+        Assert.assertTrue(isPresent(SauceInventoryConstants.APP_LOGO_CLASS),"No se ve el logo de la app");
     }
 
     public static void clickAddToCart() {
@@ -34,19 +33,18 @@ public class SauceInventoryService extends ActionManager {
     }
 
     public static void verificoContadorCarrito(int numero) {
-        Assert.assertTrue("No se ven cambios en el ícono del carrito", isPresent(SauceInventoryConstants.CONTADOR_CARRITO_CLASS));
+        Assert.assertTrue(isPresent(SauceInventoryConstants.CONTADOR_CARRITO_CLASS),"No se ven cambios en el ícono del carrito");
         String contadorCarrito = getText(SauceInventoryConstants.CONTADOR_CARRITO_CLASS);
         int actual = Integer.parseInt(contadorCarrito);
-        junit.framework.Assert.assertEquals("No se ve el numero esperado en el contador",numero,actual);
+        Assert.assertEquals(numero,actual,"No se ve el numero esperado en el contador");
     }
 
     public static void clickRemove() {
-
         click(SauceInventoryConstants.REMOVE_BUTTON_XPATH);
     }
 
     public static void verificoContadorCarritoVacio() {
-        Assert.assertFalse("Se ve número 1 en el ícono del carrito", isPresent(SauceInventoryConstants.CONTADOR_CARRITO_CLASS));
+        Assert.assertFalse(isPresent(SauceInventoryConstants.CONTADOR_CARRITO_CLASS),"Se ve número 1 en el ícono del carrito");
     }
 
     public static void agregoProductosAlCarrito(String producto) {
@@ -62,9 +60,10 @@ public class SauceInventoryService extends ActionManager {
         }
     }
 
-    // -------------------------------
-    // Detecta cantidad (número o texto)
-    // -------------------------------
+    /**
+     * @param value
+     * DETECTA CANTIDAD DE PRODUCTOS
+     */
     private static Integer parseQuantity(String value) {
 
         // "2 productos"
@@ -96,9 +95,9 @@ public class SauceInventoryService extends ActionManager {
 
         for (int i = 0; i < quantity; i++) {
             buttons.get(i).click();
-            SauceInventoryService.ingresarCarrito();
-            SauceCartService.verificoAddProdByQuantity(quantity);
         }
+        SauceInventoryService.ingresarCarrito();
+        SauceCartService.verificoAddProdByQuantity(quantity);
     }
 
     // -------------------------------
@@ -118,8 +117,6 @@ public class SauceInventoryService extends ActionManager {
 
             if (name.equalsIgnoreCase(productName.trim())) {
                 buttons.get(i).click();
-                SauceInventoryService.ingresarCarrito();
-                SauceCartService.verificoAddProdByName(name);
                 return;
             }
         }
@@ -129,6 +126,7 @@ public class SauceInventoryService extends ActionManager {
     }
 
     public static void ingresarCarrito() {
+
         click(SauceInventoryConstants.CART_BUTTON_CLASS);
     }
 }

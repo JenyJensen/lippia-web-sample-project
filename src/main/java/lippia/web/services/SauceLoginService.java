@@ -22,16 +22,16 @@ public class SauceLoginService extends ActionManager {
     }
 
     public static void verificoMsjUsBloq() {
-        junit.framework.Assert.assertTrue("No se ve mensaje de error de usuario bloqueado", getText(SauceLoginConstants.ERROR_MSJ_CSS).contains("Epic sadface: Sorry, this user has been locked out."));
+        Assert.assertTrue(getText(SauceLoginConstants.ERROR_MSJ_CSS).contains("Epic sadface: Sorry, this user has been locked out."),"No se ve mensaje de error de usuario bloqueado");
     }
 
     public static void verificoMsjUsInexistInval() {
-        junit.framework.Assert.assertTrue("No se ve mensaje de error de usuario inexistente", getText(SauceLoginConstants.ERROR_MSJ_CSS).contains("Epic sadface: Username and password do not match any user in this service"));
+        Assert.assertTrue(getText(SauceLoginConstants.ERROR_MSJ_CSS).contains("Epic sadface: Username and password do not match any user in this service"),"No se ve mensaje de error de usuario inexistente");
 
     }
 
     public static void verificoMsjUsRequerido() {
-        junit.framework.Assert.assertTrue("No se ve mensaje de error de usuario requerido", getText(SauceLoginConstants.ERROR_MSJ_CSS).contains("Epic sadface: Username is required"));
+        Assert.assertTrue(getText(SauceLoginConstants.ERROR_MSJ_CSS).contains("Epic sadface: Username is required"),"No se ve mensaje de error de usuario requerido");
     }
 
     public static void verificoMsjPasRequerido() {

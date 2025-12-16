@@ -13,7 +13,6 @@ public class SauceCartSteps {
     @And("lleno el formulario con nombre (.*), apellido (.*) y codigo postal (.*) y hago click en boton continuar")
     public void llenoElFormularioDeCompra(String nombre, String apellido, String areaCode) {
         SauceCartService.FormularioCheckout(nombre, apellido, areaCode);
-        SauceCartService.verificoAddProdByQuantity(quantity);
     }
 
     @Then("verifico ver la página final de compra terminada")

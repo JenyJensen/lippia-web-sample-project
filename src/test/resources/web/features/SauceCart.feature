@@ -13,8 +13,6 @@ Feature: carrito de compras de pagina Saucedemo
     And hago click en el boton <boton>
     Then verifico ver la página final de compra terminada
 
-
-
     Examples:
       | producto      | boton    | nombre | apellido | areaCode |boton|
       | dos productos | checkout | Marcia | Sanz     | 1234     |finish|
