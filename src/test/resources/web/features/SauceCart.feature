@@ -1,4 +1,4 @@
-@Saucedemo
+
 Feature: carrito de compras de pagina Saucedemo
 
   Background:
