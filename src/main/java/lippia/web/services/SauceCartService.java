@@ -27,7 +27,7 @@ public class SauceCartService extends ActionManager {
         setInput(SauceCartConstants.APELLIDO_INPUT_XPATH, apellido);
         setInput(SauceCartConstants.AREACODE_INPUT_XPATH, areaCode);
         click(SauceCartConstants.CONTINUE_BUTTON_XPATH);
-        Assert.assertEquals(getText(SauceInventoryConstants.CONTADOR_CARRITO_CLASS), getText(SauceCartConstants.CART_ITEM_CLASS));
+        Assert.assertEquals(getText(SauceInventoryConstants.CONTADOR_CARRITO_CLASS), getText(SauceCartConstants.CART_ITEM_CLASS),"No hay los mismos productos en el icono del cart badge que en el overview");
     }
 
     public static void verificarPaginaCompraTerminada() {
