@@ -9,8 +9,8 @@ Feature: Agregar y eliminar productos del carrito de compras de saucedemo
     When agrego <producto> al carrito
     Then verifico que en el icono carrito aparezca el numero <numero>
     Examples:
-      | producto  | numero |
-      | el primer producto| 1      |
+      | producto           | numero |
+      | el primer producto | 1      |
 
   @SauceEliminarProductoCarritoEnInventory
   Scenario Outline: eliminar productos del carrito de compras desde inventory page
