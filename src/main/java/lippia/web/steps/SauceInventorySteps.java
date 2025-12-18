@@ -22,12 +22,6 @@ public class SauceInventorySteps extends PageSteps {
         SauceInventoryService.verificoAppLogo();
     }
 
-    @When("hago click en add to cart en el primer producto")
-    public void hagoClickAddToCart() {
-        SauceInventoryService.clickAddToCart();
-    }
-
-
     @Then("verifico que en el icono carrito aparezca el numero (.*)")
     public void verificoIconoCarritoMuestraUno(int numero) {
         SauceInventoryService.verificoContadorCarrito(numero);
@@ -43,7 +37,7 @@ public class SauceInventorySteps extends PageSteps {
         SauceInventoryService.verificoContadorCarritoVacio();
     }
 
-    @And("he agregado (.*) al carrito")
+    @And("agrego (.*) al carrito")
     public void heAgregadoProductosAlCarrito(String producto) {
         SauceInventoryService.agregoProductosAlCarrito(producto);
     }

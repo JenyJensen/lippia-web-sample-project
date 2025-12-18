@@ -13,23 +13,8 @@ import static java.lang.Integer.parseInt;
 
 public class SauceInventoryService extends ActionManager {
 
-    private static final Map<String, Integer> TEXT_NUMBERS;
-    static {
-        Map<String, Integer> map = new HashMap<>();
-        map.put("un", 1);
-        map.put("dos", 2);
-        map.put("tres", 3);
-        map.put("cuatro", 4);
-        map.put("cinco", 5);
-        TEXT_NUMBERS = Collections.unmodifiableMap(map);
-    }
-
     public static void verificoAppLogo() {
         Assert.assertTrue(isPresent(SauceInventoryConstants.APP_LOGO_CLASS),"No se ve el logo de la app");
-    }
-
-    public static void clickAddToCart() {
-        click(SauceInventoryConstants.FIRST_ADD_TO_CART_XPATH);
     }
 
     public static void verificoContadorCarrito(int numero) {
@@ -43,6 +28,17 @@ public class SauceInventoryService extends ActionManager {
         click(SauceInventoryConstants.REMOVE_BUTTON_XPATH);
     }
 
+    private static final Map<String, Integer> TEXT_NUMBERS;
+    static {
+        Map<String, Integer> map = new HashMap<>();
+        map.put("el primer",1);
+        map.put("un", 1);
+        map.put("dos", 2);
+        map.put("tres", 3);
+        map.put("cuatro", 4);
+        map.put("cinco", 5);
+        TEXT_NUMBERS = Collections.unmodifiableMap(map);
+    }
     public static void verificoContadorCarritoVacio() {
         Assert.assertFalse(isPresent(SauceInventoryConstants.CONTADOR_CARRITO_CLASS),"Se ve número 1 en el ícono del carrito");
     }
