@@ -5,7 +5,7 @@ import io.cucumber.java.en.Then;
 import lippia.web.services.SauceCartService;
 
 public class SauceCartSteps {
-    @And("hago click en el boton (.*)")
+    @And("^hago click en el boton '(.*)'$")
     public void clickBotonCarrito(String boton) {
         SauceCartService.clickCartButtons(boton);
         }
