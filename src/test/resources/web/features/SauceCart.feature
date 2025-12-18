@@ -1,4 +1,4 @@
-
+@Saucedemo
 Feature: carrito de compras de pagina Saucedemo
 
   Background:
@@ -10,6 +10,7 @@ Feature: carrito de compras de pagina Saucedemo
     When ingreso al carrito
     And hago click en el boton '<boton>'
     And lleno el formulario con nombre <nombre>, apellido <apellido> y codigo postal <areaCode> y hago click en boton continuar
+    And verifico datos en la pagina de overview
     And hago click en el boton '<boton>'
     Then verifico ver la página final de compra terminada
 

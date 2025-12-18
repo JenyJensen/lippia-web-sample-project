@@ -23,11 +23,10 @@ public class SauceCartService extends ActionManager {
     }
 
     public static void FormularioCheckout(String nombre, String apellido, String areaCode) {
-        setInput(SauceCartConstants.NAME_INPUT_XPATH, nombre);
-        setInput(SauceCartConstants.APELLIDO_INPUT_XPATH, apellido);
-        setInput(SauceCartConstants.AREACODE_INPUT_XPATH, areaCode);
-        click(SauceCartConstants.CONTINUE_BUTTON_XPATH);
-        Assert.assertEquals(getText(SauceInventoryConstants.CONTADOR_CARRITO_CLASS), getText(SauceCartConstants.CART_ITEM_CLASS),"No hay los mismos productos en el icono del cart badge que en el overview");
+        setInput(SauceCartConstants.NAME_INPUT_ID, nombre);
+        setInput(SauceCartConstants.APELLIDO_INPUT_ID, apellido);
+        setInput(SauceCartConstants.AREACODE_INPUT_ID, areaCode);
+        click(SauceCartConstants.CONTINUE_BUTTON_ID);
     }
 
     public static void verificarPaginaCompraTerminada() {
@@ -38,5 +37,9 @@ public class SauceCartService extends ActionManager {
         List<WebElement> cart_items =
                 WebActionManager.getElements(SauceCartConstants.CART_ITEM_CLASS);
         Assert.assertEquals(cart_items.size(), quantity,"No hay la misma cantidad de productos en el carrito que los agregados");
+    }
+
+    public static void verificarOverview() {
+        Assert.assertEquals(getText(SauceInventoryConstants.CONTADOR_CARRITO_CLASS), getText(SauceCartConstants.CART_ITEM_CLASS),"No hay los mismos productos en el icono del cart badge que en el overview");
     }
 }
