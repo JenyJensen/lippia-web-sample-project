@@ -38,8 +38,9 @@ public class SauceInventorySteps extends PageSteps {
     }
 
     @And("agrego (.*) al carrito")
-    public void heAgregadoProductosAlCarrito(String producto) {
+    public void heAgregadoProductosAlCarrito(String producto) throws InterruptedException {
         SauceInventoryService.agregoProductosAlCarrito(producto);
+        Thread.sleep(3000);
     }
 
     @When("ingreso al carrito")

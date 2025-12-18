@@ -92,8 +92,6 @@ public class SauceInventoryService extends ActionManager {
         for (int i = 0; i < quantity; i++) {
             buttons.get(i).click();
         }
-        SauceInventoryService.ingresarCarrito();
-        SauceCartService.verificoAddProdByQuantity(quantity);
     }
 
     // -------------------------------
