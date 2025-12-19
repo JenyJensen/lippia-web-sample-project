@@ -120,7 +120,6 @@ public class SauceInventoryService extends ActionManager {
     }
 
     public static void ingresarCarrito() {
-
         click(SauceInventoryConstants.CART_BUTTON_CLASS);
     }
 }

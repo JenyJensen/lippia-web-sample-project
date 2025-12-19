@@ -11,15 +11,12 @@ import java.util.List;
 
 public class SauceCartService extends ActionManager {
 
-    public static void clickCartButtons(String boton) {
-        switch (boton) {
-            case "checkout":
-                click(SauceCartConstants.CHECKOUT_BUTTON_CSS);
-                break;
-            case "finish":
-                click(SauceCartConstants.FINISH_BUTTON_CSS);
-                break;
-        }
+    public static void clickCheckout() {
+        click(SauceCartConstants.CHECKOUT_BUTTON_CSS);
+    }
+
+    public static void clickFinish() {
+        click(SauceCartConstants.FINISH_BUTTON_CSS);
     }
 
     public static void FormularioCheckout(String nombre, String apellido, String areaCode) {
@@ -30,16 +27,14 @@ public class SauceCartService extends ActionManager {
     }
 
     public static void verificarPaginaCompraTerminada() {
-        Assert.assertTrue(isPresent(SauceCartConstants.CHECKOUT_COMPLETE_XPATH));
-    }
-
-    public static void verificoAddProdByQuantity(int quantity) {
-        List<WebElement> cart_items =
-                WebActionManager.getElements(SauceCartConstants.CART_ITEM_CLASS);
-        Assert.assertEquals(cart_items.size(), quantity,"No hay la misma cantidad de productos en el carrito que los agregados");
+        Assert.assertTrue(isPresent(SauceCartConstants.CHECKOUT_COMPLETE_ID), "No se ve cartel con texto Thank you for your order!");
     }
 
     public static void verificarOverview() {
-        Assert.assertEquals(getText(SauceInventoryConstants.CONTADOR_CARRITO_CLASS), getText(SauceCartConstants.CART_ITEM_CLASS),"No hay los mismos productos en el icono del cart badge que en el overview");
+        int cantidadBadge = Integer.parseInt(
+                getText(SauceInventoryConstants.CONTADOR_CARRITO_CLASS)
+        );
+        Assert.assertEquals(cantidadBadge, getElements(SauceCartConstants.CART_ITEM_CLASS).size(), "No hay la misma cantidad de productos en el icono del cart badge que en el overview");
+        Assert.assertEquals(getText(SauceCartConstants.TITLE_OVERVIEW_CSS), "Checkout: Overview", "No se ve el titulo de la pagina de Overview");
     }
 }
