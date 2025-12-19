@@ -1,4 +1,4 @@
-@Saucedemo
+
 Feature: login en saucedemo
 
   @LoginExitosoSaucedemo

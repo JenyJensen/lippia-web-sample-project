@@ -6,9 +6,9 @@ import io.cucumber.java.en.Then;
 import lippia.web.services.SauceCartService;
 
 public class SauceCartSteps {
-    @And("hago click en el boton checkout")
-    public void clickCheckoutCarrito() {
-        SauceCartService.clickCheckout();
+    @And("^hago click en el boton (.*)$")
+    public void clickCheckoutCarrito(String nombreBoton) {
+        SauceCartService.clickCheckout(nombreBoton);
     }
 
     @And("lleno el formulario con nombre (.*), apellido (.*) y codigo postal (.*) y hago click en boton continuar")
@@ -20,12 +20,6 @@ public class SauceCartSteps {
     @And("verifico datos en la pagina de overview")
     public void verificoDatosEnLaPaginaDeOverview() {
         SauceCartService.verificarOverview();
-    }
-
-
-    @And("hago click en el boton finish")
-    public void clickEnElBotonFinish() {
-        SauceCartService.clickFinish();
     }
 
     @Then("verifico ver la página final de compra terminada")

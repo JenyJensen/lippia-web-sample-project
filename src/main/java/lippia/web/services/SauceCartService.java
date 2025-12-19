@@ -2,6 +2,8 @@ package lippia.web.services;
 
 import com.crowdar.core.actions.ActionManager;
 import com.crowdar.core.actions.WebActionManager;
+import io.cucumber.java.bs.A;
+import io.cucumber.java.en.And;
 import lippia.web.constants.SauceCartConstants;
 import lippia.web.constants.SauceInventoryConstants;
 import org.openqa.selenium.WebElement;
@@ -11,12 +13,12 @@ import java.util.List;
 
 public class SauceCartService extends ActionManager {
 
-    public static void clickCheckout() {
+    public static void clickCheckout(String nombreBoton) {
+        if (nombreBoton.contains("checkout")){
         click(SauceCartConstants.CHECKOUT_BUTTON_CSS);
-    }
-
-    public static void clickFinish() {
-        click(SauceCartConstants.FINISH_BUTTON_CSS);
+    }else if (nombreBoton.contains("finish")){
+            click(SauceCartConstants.FINISH_BUTTON_CSS);
+        }
     }
 
     public static void FormularioCheckout(String nombre, String apellido, String areaCode) {
