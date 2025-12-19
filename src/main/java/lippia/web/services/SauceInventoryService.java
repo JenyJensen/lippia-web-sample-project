@@ -5,42 +5,48 @@ import com.crowdar.core.actions.WebActionManager;
 import org.testng.Assert;
 import lippia.web.constants.SauceInventoryConstants;
 import org.openqa.selenium.WebElement;
+
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import static java.lang.Integer.parseInt;
 
 public class SauceInventoryService extends ActionManager {
 
     public static void verificoAppLogo() {
-        Assert.assertTrue(isPresent(SauceInventoryConstants.APP_LOGO_CLASS),"No se ve el logo de la app");
+        Assert.assertTrue(isPresent(SauceInventoryConstants.APP_LOGO_CLASS), "No se ve el logo de la app");
     }
 
     public static void verificoContadorCarrito(int numero) {
-        Assert.assertTrue(isPresent(SauceInventoryConstants.CONTADOR_CARRITO_CLASS),"No se ven cambios en el ícono del carrito");
+        Assert.assertTrue(isPresent(SauceInventoryConstants.CONTADOR_CARRITO_CLASS), "No se ven cambios en el ícono del carrito");
         String contadorCarrito = getText(SauceInventoryConstants.CONTADOR_CARRITO_CLASS);
         int actual = Integer.parseInt(contadorCarrito);
-        Assert.assertEquals(numero,actual,"No se ve el numero esperado en el contador");
+        Assert.assertEquals(numero, actual, "No se ve el numero esperado en el contador");
     }
 
     public static void clickRemove() {
+
         click(SauceInventoryConstants.REMOVE_BUTTON_XPATH);
     }
 
+    public static void verificoContadorCarritoVacio() {
+        Assert.assertFalse(isPresent(SauceInventoryConstants.CONTADOR_CARRITO_CLASS), "Se ve número 1 en el ícono del carrito");
+    }
+
     private static final Map<String, Integer> TEXT_NUMBERS;
+
     static {
         Map<String, Integer> map = new HashMap<>();
-        map.put("el primer",1);
+        map.put("el primer", 1);
         map.put("un", 1);
         map.put("dos", 2);
         map.put("tres", 3);
         map.put("cuatro", 4);
         map.put("cinco", 5);
+        map.put("seis", 6);
         TEXT_NUMBERS = Collections.unmodifiableMap(map);
-    }
-    public static void verificoContadorCarritoVacio() {
-        Assert.assertFalse(isPresent(SauceInventoryConstants.CONTADOR_CARRITO_CLASS),"Se ve número 1 en el ícono del carrito");
     }
 
     public static void agregoProductosAlCarrito(String producto) {
@@ -56,18 +62,12 @@ public class SauceInventoryService extends ActionManager {
         }
     }
 
-    /**
-     * @param value
-     * DETECTA CANTIDAD DE PRODUCTOS
-     */
     private static Integer parseQuantity(String value) {
 
-        // "2 productos"
         if (value.matches("\\d+.*")) {
             return parseInt(value.split(" ")[0]);
         }
 
-        // "dos productos"
         for (String key : TEXT_NUMBERS.keySet()) {
             if (value.startsWith(key)) {
                 return TEXT_NUMBERS.get(key);
@@ -77,9 +77,6 @@ public class SauceInventoryService extends ActionManager {
         return null;
     }
 
-    // -------------------------------
-    // Agrega N primeros productos
-    // -------------------------------
     private static void addFirstNProducts(int quantity) {
 
         List<WebElement> buttons =
@@ -94,9 +91,6 @@ public class SauceInventoryService extends ActionManager {
         }
     }
 
-    // -------------------------------
-    // Agrega un producto por nombre
-    // -------------------------------
     public static void addProductByName(String productName) {
 
         List<WebElement> names =

@@ -1,6 +1,5 @@
 package lippia.web.steps;
 
-import cucumber.api.PendingException;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import lippia.web.services.SauceCartService;

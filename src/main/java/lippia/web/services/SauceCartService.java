@@ -1,15 +1,9 @@
 package lippia.web.services;
 
 import com.crowdar.core.actions.ActionManager;
-import com.crowdar.core.actions.WebActionManager;
-import io.cucumber.java.bs.A;
-import io.cucumber.java.en.And;
 import lippia.web.constants.SauceCartConstants;
 import lippia.web.constants.SauceInventoryConstants;
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
-
-import java.util.List;
 
 public class SauceCartService extends ActionManager {
 
