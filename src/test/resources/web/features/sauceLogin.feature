@@ -1,10 +1,10 @@
-@Login@Saucedemo
+@Login @Saucedemo
 Feature: login en saucedemo
 
   Background:
     Given estoy en la página de login de saucedemo
 
-  @LoginExitosoSaucedemo@Smoke@Regression
+  @LoginExitoso @Smoke @Regression
   Scenario Outline: login exitoso con usuario <usuario> en pagina de inicio de saucedemo
     When ingreso el usuario <usuario> y la contrasenia <contrasenia>
     And hago click en el boton login
@@ -17,7 +17,7 @@ Feature: login en saucedemo
       | error_user              | secret_sauce | el logo de la app en el inventory |
       | visual_user             | secret_sauce | el logo de la app en el inventory |
 
-  @FalloLoginSaucedemo@Regression
+  @FalloLogin @Regression
   Scenario Outline: login fallido por <razon> en pagina de inicio de saucedemo
     When ingreso el usuario <usuario> y la contrasenia <contrasenia>
     And hago click en el boton login
