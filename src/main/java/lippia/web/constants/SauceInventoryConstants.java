@@ -1,7 +1,5 @@
 package lippia.web.constants;
 
-import org.openqa.selenium.WebElement;
-
 public class SauceInventoryConstants {
     public static final String CONTADOR_CARRITO_CLASS ="class:shopping_cart_badge" ;
     public static final String APP_LOGO_CLASS = "class:app_logo";

@@ -1,22 +1,29 @@
 package lippia.web.services;
 
+import com.crowdar.core.PropertyManager;
 import com.crowdar.core.actions.ActionManager;
 import com.crowdar.core.actions.WebActionManager;
 import org.testng.Assert;
 import lippia.web.constants.SauceInventoryConstants;
 import org.openqa.selenium.WebElement;
-
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
+import static com.crowdar.core.actions.WebActionManager.navigateTo;
 import static java.lang.Integer.parseInt;
+import static lippia.web.services.SauceLoginService.ingresoUsuYConPorParametros;
 
 public class SauceInventoryService extends ActionManager {
 
     public static void verificoAppLogo() {
         Assert.assertTrue(isPresent(SauceInventoryConstants.APP_LOGO_CLASS), "No se ve el logo de la app");
+    }
+    public static void gettingInventoryPage() {
+        navigateTo(PropertyManager.getProperty("web.base.url"));
+        ingresoUsuYConPorParametros("standard_user", "secret_sauce");
+        SauceCartService.clickSaucedemoButton("login");
+        SauceInventoryService.verificoAppLogo();
     }
 
     public static void verificoContadorCarrito(int numero) {
@@ -108,7 +115,6 @@ public class SauceInventoryService extends ActionManager {
                 return;
             }
         }
-
         throw new RuntimeException(
                 "No se encontró el producto: " + productName);
     }
@@ -116,5 +122,7 @@ public class SauceInventoryService extends ActionManager {
     public static void ingresarCarrito() {
         click(SauceInventoryConstants.CART_BUTTON_CLASS);
     }
+
+
 }
 

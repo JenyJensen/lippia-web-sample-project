@@ -4,7 +4,7 @@ Feature: carrito de compras de pagina Saucedemo
   Background:
     Given he iniciado sesion y estoy en la pagina de inventario de la aplicacion
 
-  @TerminarCompra@Smoke
+  @TerminarCompra@Smoke@Regression
   Scenario Outline: termino compra de productos agregados al carrito
     And agrego <producto> al carrito
     When ingreso al carrito

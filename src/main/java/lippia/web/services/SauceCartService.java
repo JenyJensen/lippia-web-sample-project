@@ -3,15 +3,18 @@ package lippia.web.services;
 import com.crowdar.core.actions.ActionManager;
 import lippia.web.constants.SauceCartConstants;
 import lippia.web.constants.SauceInventoryConstants;
+import lippia.web.constants.SauceLoginConstants;
 import org.testng.Assert;
 
 public class SauceCartService extends ActionManager {
 
-    public static void clickCheckout(String nombreBoton) {
-        if (nombreBoton.contains("checkout")){
-        click(SauceCartConstants.CHECKOUT_BUTTON_CSS);
-    }else if (nombreBoton.contains("finish")){
+    public static void clickSaucedemoButton(String nombreBoton) {
+        if (nombreBoton.contains("checkout")) {
+            click(SauceCartConstants.CHECKOUT_BUTTON_CSS);
+        } else if (nombreBoton.contains("finish")) {
             click(SauceCartConstants.FINISH_BUTTON_CSS);
+        } else if (nombreBoton.contains("login")) {
+            click(SauceLoginConstants.LOGIN_BUTTON_ID);
         }
     }
 
