@@ -123,6 +123,5 @@ public class SauceInventoryService extends ActionManager {
         click(SauceInventoryConstants.CART_BUTTON_CLASS);
     }
 
-
 }
 

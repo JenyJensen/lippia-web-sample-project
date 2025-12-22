@@ -1,16 +1,11 @@
 package lippia.web.steps;
 
 import com.crowdar.core.PageSteps;
-import com.crowdar.core.PropertyManager;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import lippia.web.services.SauceCartService;
 import lippia.web.services.SauceInventoryService;
-import static com.crowdar.core.actions.WebActionManager.navigateTo;
-import static lippia.web.services.SauceCartService.clickSaucedemoButton;
-import static lippia.web.services.SauceLoginService.ingresoUsuYConPorParametros;
 
 public class SauceInventorySteps extends PageSteps {
     @Given("he iniciado sesion y estoy en la pagina de inventario de la aplicacion")
