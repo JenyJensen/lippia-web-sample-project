@@ -16,14 +16,11 @@ import static lippia.web.services.SauceLoginService.ingresoUsuYConPorParametros;
 
 public class SauceInventoryService extends ActionManager {
 
-    public static void verificoAppLogo() {
-        Assert.assertTrue(isPresent(SauceInventoryConstants.APP_LOGO_CLASS), "No se ve el logo de la app");
-    }
     public static void gettingInventoryPage() {
         navigateTo(PropertyManager.getProperty("web.base.url"));
         ingresoUsuYConPorParametros("standard_user", "secret_sauce");
         SauceCartService.clickSaucedemoButton("login");
-        SauceInventoryService.verificoAppLogo();
+        SauceLoginService.verificoResultado("el logo de la app en el inventory");
     }
 
     public static void verificoContadorCarrito(int numero) {

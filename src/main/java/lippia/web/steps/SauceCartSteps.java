@@ -20,9 +20,5 @@ public class SauceCartSteps {
         SauceCartService.verificarOverview();
     }
 
-    @Then("verifico ver la página final de compra terminada")
-    public void verificoPaginaCompraTerminada() {
-        SauceCartService.verificarPaginaCompraTerminada();
-    }
 }
 
